@@ -10,7 +10,7 @@
   import ThreadList from '@/components/ThreadList'
 
   export default {
-    name: 'HelloWorld',
+    name: 'PageHome',
     components: {
       ThreadList
     },
