@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import ThreadListItem from '@/components/ThreadListItem'
+  import ThreadListItem from './ThreadListItem'
 
   export default {
     name: 'ThreadList',

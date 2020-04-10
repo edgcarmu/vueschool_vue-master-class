@@ -7,7 +7,7 @@
 
 <script>
   import sourceData from '@/data.json'
-  import ThreadList from '@/components/ThreadList'
+  import ThreadList from '../components/ThreadList'
 
   export default {
     name: 'PageHome',
