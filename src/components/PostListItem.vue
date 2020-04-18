@@ -16,8 +16,11 @@
       </div>
     </div>
 
-    <div class="post-date text-faded">
-      {{post.publishedAt}}
+    <div
+      class="post-date text-faded"
+      :title="post.publishedAt | humanFriendlyDate"
+    >
+      {{post.publishedAt | diffForHumans}}
     </div>
   </div>
 </template>
