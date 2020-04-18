@@ -5,21 +5,10 @@
 
       <PostList :posts="posts"/>
 
-      <form @submit.prevent="addPost">
-        <div class="form-group">
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          class="form-input"
-          v-model="newPostText"
-        ></textarea>
-        </div>
-        <div class="form-actions">
-          <button class="btn-blue">Submit post</button>
-        </div>
-      </form>
+      <PostEditor
+        @save="addPost"
+        :threadId="id"
+      />
 
     </div>
   </div>
@@ -28,11 +17,13 @@
 <script>
   import sourceData from '@/data.json'
   import PostList from '../components/PostList'
+  import PostEditor from '../components/PostEditor'
 
   export default {
     name: 'ThreadShow',
     components: {
-      PostList
+      PostList,
+      PostEditor
     },
     props: {
       id: {
@@ -42,8 +33,8 @@
     },
     data () {
       return {
-        thread: sourceData.threads[this.id],
-        newPostText: ''
+        thread: sourceData.threads[this.id]
+        // newPostText: ''
       }
     },
     computed: {
@@ -54,19 +45,12 @@
       }
     },
     methods: {
-      addPost () {
-        const postId = 'greatPost' + Math.random()
-        const post = {
-          text: this.newPostText,
-          publishedAt: Math.floor(Date.now() / 1000),
-          threadId: this.id,
-          userId: 'jUjmgCurRRdzayqbRMO7aTG9X1G2',
-          '.key': postId
-        }
+      addPost (eventData) {
+        const post = eventData.post
+        const postId = eventData.post['.key']
         this.$set(sourceData.posts, postId, post)
         this.$set(this.thread.posts, postId, postId)
         this.$set(sourceData.users[post.userId].posts, postId, postId)
-        this.newPostText = ''
       }
     }
   }
