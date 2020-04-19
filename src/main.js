@@ -6,7 +6,7 @@ import router from './router'
 
 import AppDate from './components/AppDate'
 
-import './filters.js'
+import './utils/filters.js'
 
 Vue.component('AppDate', AppDate)
 Vue.config.productionTip = false
