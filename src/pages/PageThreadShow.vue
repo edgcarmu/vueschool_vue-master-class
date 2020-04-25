@@ -20,7 +20,6 @@
 </template>
 
 <script>
-  import sourceData from '@/data.json'
   import PostList from '../components/PostList'
   import PostEditor from '../components/PostEditor'
 
@@ -38,22 +37,21 @@
     },
     data () {
       return {
-        thread: sourceData.threads[this.id]
-        // newPostText: ''
+        thread: this.$store.state.threads[this.id]
       }
     },
     computed: {
       posts () {
         const postIds = Object.values(this.thread.posts)
-        return Object.values(sourceData.posts)
+        return Object.values(this.$store.state.posts)
           .filter(post => postIds.includes(post['.key']))
       }
     },
     methods: {
       addPost ({ post }) {
-        this.$set(sourceData.posts, post['.key'], post)
+        this.$set(this.$store.posts, post['.key'], post)
         this.$set(this.thread.posts, post['.key'], post['.key'])
-        this.$set(sourceData.users[post.userId].posts, post['.key'], post['.key'])
+        this.$set(this.$store.state.users[post.userId].posts, post['.key'], post['.key'])
       }
     }
   }
