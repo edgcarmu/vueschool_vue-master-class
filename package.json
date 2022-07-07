@@ -13,7 +13,7 @@
   "dependencies": {
     "js-yaml": "^3.13.1",
     "mem": "^6.1.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "serialize-javascript": "^3.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
